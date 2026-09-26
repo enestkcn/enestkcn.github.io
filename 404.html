@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 // QUERY_TARGET_NOT_FOUND</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        darkBg: '#0a0a0a',
+                        cardBg: '#1a1a1a',
+                        borderColor: '#2a2a2a',
+                        cyberCyan: '#00f0ff',
+                        terminalGreen: '#00ff66',
+                        terminalYellow: '#f3e800',
+                        terminalRed: '#ff3366',
+                        softWhite: '#e0e0e0',
+                        mutedGray: '#888888'
+                    },
+                    fontFamily: {
+                        mono: ['JetBrains Mono', 'Fira Code', 'Courier New', 'monospace']
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Include JetBrains Mono font -->
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'JetBrains Mono', monospace;
+            background-color: #0a0a0a;
+            color: #e0e0e0;
+        }
+        /* CRT Scanline effect overlay */
+        .scanlines {
+            background: linear-gradient(
+                rgba(18, 16, 16, 0) 50%, 
+                rgba(0, 0, 0, 0.25) 50%
+            ), linear-gradient(
+                90deg,
+                rgba(255, 0, 0, 0.03),
+                rgba(0, 255, 0, 0.01),
+                rgba(0, 0, 255, 0.03)
+            );
+            background-size: 100% 3px, 3px 100%;
+            pointer-events: none;
+        }
+        .glow-text {
+            text-shadow: 0 0 10px rgba(255, 51, 102, 0.5);
+        }
+        .glow-box {
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-darkBg text-softWhite antialiased selection:bg-terminalRed selection:text-black min-h-screen flex items-center justify-center p-4">
+
+    <div class="fixed inset-0 z-50 pointer-events-none scanlines opacity-40"></div>
+
+    <div class="max-w-xl w-full bg-cardBg border border-borderColor rounded-lg overflow-hidden shadow-2xl glow-box relative z-10">
+        <!-- Terminal Header -->
+        <div class="bg-[#121212] px-4 py-3 border-b border-borderColor flex items-center justify-between text-xs text-mutedGray">
+            <div class="flex items-center space-x-2">
+                <span class="text-terminalRed">●</span>
+                <span class="text-terminalYellow">●</span>
+                <span class="text-terminalGreen">●</span>
+                <span class="ml-2 font-mono">error@tekcan-node:~#</span>
+            </div>
+            <span class="text-terminalRed font-bold">STATUS: 404</span>
+        </div>
+
+        <!-- Error Content -->
+        <div class="p-8 font-mono space-y-6 text-center sm:text-left">
+            <div class="space-y-2">
+                <div class="text-xs text-terminalRed tracking-widest uppercase">/* SYSTEM ERROR */</div>
+                <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-softWhite">
+                    <span class="text-terminalRed glow-text">404</span> // Target Not Found
+                </h1>
+            </div>
+
+            <div class="bg-darkBg border border-borderColor/60 p-4 rounded text-xs sm:text-sm space-y-2 text-mutedGray leading-relaxed text-left">
+                <p><span class="text-cyberCyan">&gt;</span> query_path: <span class="text-terminalRed">unresolved</span></p>
+                <p><span class="text-cyberCyan">&gt;</span> diagnosis: The requested dataset or path does not exist in this database node.</p>
+                <p class="text-softWhite pt-2">Suggested command: Return to home node or inspect the main schema.</p>
+            </div>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center sm:justify-start gap-4 pt-2">
+                <a href="/" class="w-full sm:w-auto px-6 py-3 bg-cyberCyan text-black font-bold rounded hover:bg-opacity-90 transition-all text-xs text-center flex items-center justify-center space-x-2">
+                    <i class="fas fa-terminal"></i>
+                    <span>./return_home.sh</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Footer Info -->
+        <div class="bg-[#121212] px-6 py-3 border-t border-borderColor text-[11px] text-mutedGray flex justify-between items-center">
+            <span>node: tekcan.me</span>
+            <span class="text-terminalGreen">Pipeline Active</span>
+        </div>
+    </div>
+
+</body>
+</html>
